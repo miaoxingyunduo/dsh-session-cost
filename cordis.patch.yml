@@ -1,0 +1,25 @@
+# Bundle layer shipped by @local/dsh-session-cost.
+#
+# A package becomes a *bundle* by declaring this file in package.json
+# (`dsh.bundle.patch`) and by being listed in the profile's `dsh.profile.bundles`.
+# Bundles are what the Plugins page lists and toggles.
+#
+# Three rows come out of one package on purpose. Cordis holds a plugin back
+# until every service it declares is present, and the rows need different
+# services:
+#
+#   session-cost           → tools     (session_cost / list_session_costs + the /api routes)
+#   session-cost-command   → commands  (/cost)
+#
+# Splitting them means the tools still mount in a composition with no command
+# registry (and `/cost` still works where no tool registry exists), instead of
+# the whole package silently never activating.
+#
+# This layer carries no deployment-specific values; the profile's own
+# cordis.patch.yml overrides both rows by id (last layer wins), which is where
+# the rate table lives.
+- insert:
+    - id: session-cost
+      name: '@local/dsh-session-cost'
+    - id: session-cost-command
+      name: '@local/dsh-session-cost/command'

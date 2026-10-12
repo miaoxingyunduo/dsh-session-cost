@@ -1,0 +1,43 @@
+{
+  "name": "@local/dsh-session-cost",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Per-conversation token and money accounting: session_cost / list_session_costs tools, the /cost command, and a composer cost pill",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./command": "./lib/command.js",
+    "./client": "./lib/client.js",
+    "./rates": "./lib/rates.js",
+    "./usage": "./lib/usage.js",
+    "./engine": "./lib/engine.js",
+    "./report": "./lib/report.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test --test-isolation=none --test-force-exit test/*.test.mjs",
+    "install-plugin": "node install/install.mjs"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-primitives"
+      ],
+      "platform": "web"
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-tools": "*",
+    "@deepseek-ai/schemastery": "*"
+  }
+}

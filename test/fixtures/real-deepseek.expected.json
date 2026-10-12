@@ -1,0 +1,21 @@
+{
+  "source": "trimmed from a real DSH session log; only session/assistant-message events, verbatim",
+  "note": "step/end count equals assistant/message count in a real log, which is what makes this fold equal DSH's own tokenUsage projection",
+  "provenance": {
+    "sessionId": "session-322285cb-80cf-4165-ac8a-85d67e274e3a",
+    "events": 306
+  },
+  "projected": {
+    "uncachedInputTokens": 60520,
+    "outputTokens": 33975,
+    "cacheReadTokens": 2784512,
+    "cacheWriteTokens": 0
+  },
+  "totals": {
+    "uncachedInputTokens": 60520,
+    "cacheReadTokens": 2784512,
+    "cacheWriteTokens": 0,
+    "outputTokens": 33975
+  },
+  "attempts": 37
+}
